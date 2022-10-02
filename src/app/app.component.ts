@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { UsuarioService } from './usuario.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private usuarioService: UsuarioService) {
     this.registerForm = this.formBuilder.group(
       {
         email: ["", [Validators.required, Validators.email]],
@@ -54,16 +55,18 @@ export class AppComponent implements OnInit{
     if (this.registerForm.invalid) {
       return;
     }
+    this.usuarioService.agregaUsuario(this.registerForm.value)
+      .subscribe(data => {
+        console.log(data);
+      }, (err: any) => {
+        alert(`Error ${err.message}`);
+      });
 
-    console.log(this.registerForm.value);
-    //alert(
-    //  "SUCCESS!! :-)\n\n" + JSON.stringify(this.registerForm.value, null, 4)
-    //);
   }
 
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
   }
- 
+
 }
