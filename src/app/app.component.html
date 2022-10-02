@@ -20,7 +20,7 @@
 		<input type="password" formControlName="repeatPass" class="form-control" [ngClass]="{ 'is-invalid': form['repeatPass'].errors }" />
 		<div *ngIf="form['repeatPass'].errors" class="invalid-feedback">
 			<div *ngIf="form['repeatPass'].errors['required']">Repetir contraseña es obligatorio</div>
-			<div *ngIf="form['repeatPass'].errors['mustMatch']">Las contraseñas debden de coincidir</div>
+			<div *ngIf="form['repeatPass'].errors['mustMatch']">Las contraseñas deben de coincidir</div>
 		</div>
     <br>
 		<div class="text-center">
