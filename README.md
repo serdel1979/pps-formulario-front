@@ -1,6 +1,6 @@
 # FormularioFront
 
-Ejemplo de validación de entrada en un formulari - Angular
+Ejemplo de validación de entrada en un formulario - Angular
 
 ## Clonar éste proyecto
 
